@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Player : MonoBehaviour
 {
@@ -16,8 +17,10 @@ public class Player : MonoBehaviour
     [SerializeField] public Goal ownGoal;
     [SerializeField] public Player enemy;
     [SerializeField] GameObject iceCube;
+    private bool _isGrown = false;
     private bool isFrozen = false;
     private bool hasRoboball = false;
+    private Coroutine growCoroutine;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +69,12 @@ public class Player : MonoBehaviour
 
     public void Grow()
     {
-        StartCoroutine(GrowCoroutine(2));
+        if (growCoroutine != null)
+        {
+            StopCoroutine(growCoroutine);
+            
+        }
+        growCoroutine = StartCoroutine(Grow(2));
     }
     IEnumerator FreezeCoroutine(float freezeTime)
     {
@@ -77,11 +85,16 @@ public class Player : MonoBehaviour
         iceCube.SetActive(false);
     }
 
-    IEnumerator GrowCoroutine(float growTime)
+    IEnumerator Grow(float growTime)
     {
-        transform.localScale = transform.localScale * 2;
+        if (!_isGrown)
+        {
+            transform.localScale = transform.localScale * 2;
+        }
+        _isGrown = true;
         yield return new WaitForSeconds(growTime);
         transform.localScale = transform.localScale * 0.5f;
+        _isGrown = false;
     }
 
     IEnumerator RoboballCoroutine(float roboballTime)

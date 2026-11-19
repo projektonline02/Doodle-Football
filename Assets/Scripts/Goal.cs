@@ -9,6 +9,8 @@ public class Goal : MonoBehaviour
     [SerializeField] private Goal Goal1;
     [SerializeField] private Goal Goal2;
     public int GoalScore = 0;
+    private bool _smallGoal = false;
+    private Coroutine smallGoalsCoroutine;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Football")
@@ -21,20 +23,28 @@ public class Goal : MonoBehaviour
 
     public void SmallGoals(int whichGoal)
     {
-        StartCoroutine(SmallGoals(5, whichGoal));
+        if (smallGoalsCoroutine != null)
+        {
+            StopCoroutine(smallGoalsCoroutine);
+        }
+        smallGoalsCoroutine = StartCoroutine(SmallGoals(5, whichGoal));
     }
 
     IEnumerator SmallGoals(float smallTime, int whichGoal)
     {
-        transform.localScale = transform.localScale * 0.5f;
-        if (whichGoal == 1)
+        
+        if (!_smallGoal && whichGoal == 1)
         {
             transform.localPosition = transform.position + new Vector3(-0.7f, -2, 0);
+            transform.localScale = transform.localScale * 0.5f;
         }
-        else
+        else if (!_smallGoal)
         {
             transform.localPosition = transform.position + new Vector3(0.7f, -2, 0);
+            transform.localScale = transform.localScale * 0.5f;
         }
+
+        _smallGoal = true;
         
         yield return new WaitForSeconds(smallTime);
         transform.localScale = transform.localScale * 2;
@@ -46,6 +56,8 @@ public class Goal : MonoBehaviour
         {
             transform.localPosition = transform.position + new Vector3(-0.7f, 2, 0);
         }
+
+        _smallGoal = false;
             
     }
 

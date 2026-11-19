@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbf4b6a8ab4a7846aa76f1e5cdd3870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
+  rb: {fileID: 385669824976977894}
   jumpspeed: 7.5
   movespeed: 5
   playerNumber: 1

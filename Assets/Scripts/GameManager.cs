@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerStart1;
     [SerializeField] private GameObject playerStart2;
     [SerializeField] private GameObject ballStart;
+    [SerializeField] private GameObject Football2;
     [SerializeField] GameObject goalBanner;
     [SerializeField] private Goal goal1;
     [SerializeField] private Goal goal2;
@@ -141,10 +142,8 @@ public class GameManager : MonoBehaviour
         schwarz5.SetActive(true);
         football.schwarz(1);
         whiteLight.SetActive(false);
-        player1.transform.position += new Vector3(0, 0, 2);
-        player2.transform.position += new Vector3(0, 0, 2);
-        playerStart1.transform.position += new Vector3(0, 0, 2);
-        playerStart2.transform.position += new Vector3(0, 0, 2);
+        player1.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        player2.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
         yield return new WaitForSeconds(5);
         schwarz2.SetActive(true);
         schwarz.SetActive(false);
@@ -152,12 +151,10 @@ public class GameManager : MonoBehaviour
         schwarz4.SetActive(false);
         schwarz5.SetActive(false);
         football.schwarz(1);
-        player1.transform.position += new Vector3(0, 0, -2);
-        player2.transform.position += new Vector3(0, 0, -2);
-        playerStart1.transform.position += new Vector3(0, 0, -2);
-        playerStart2.transform.position += new Vector3(0, 0, -2);
         isSchwarz = false;
         schwarzCoroutine = null;
+        player1.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        player2.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
     }
 
     private IEnumerator Rot()
@@ -167,22 +164,22 @@ public class GameManager : MonoBehaviour
             yield break;
         }
         isRot = true;
+        Football2.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
+        ichSehe.GetComponent<SpriteRenderer>().sortingLayerName = "Background";
         rot.SetActive(true);
         ichSeheRot.SetActive(true);
         ichSehe.SetActive(true);
         whiteLight.SetActive(false);
-        football.transform.position += new Vector3(0, 0, 5);
-        ballStart.transform.position += new Vector3(0, 0, 5);
         if (!isSchwarz)
         {
             schwarz2.SetActive(true);
         }
         yield return new WaitForSeconds(5);
         ichSeheRot.SetActive(false);
+        Football2.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
+        ichSehe.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         rot.SetActive(false);
         ichSehe.SetActive(false);
-        football.transform.position += new Vector3(0, 0, -5);
-        ballStart.transform.position += new Vector3(0, 0, -5);
         schwarz2.SetActive(false);
         isRot = false;
         rotCoroutine = null;

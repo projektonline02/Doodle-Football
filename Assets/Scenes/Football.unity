@@ -2149,11 +2149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbf4b6a8ab4a7846aa76f1e5cdd3870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &1192349405 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 385669824976977894, guid: f6b808b2e511c974e8741dc3ad91a87f, type: 3}
-  m_PrefabInstance: {fileID: 9004920453996739930}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1215934744 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9212580792201417937, guid: f6b808b2e511c974e8741dc3ad91a87f, type: 3}
@@ -2731,7 +2726,6 @@ MonoBehaviour:
   - {fileID: 3026352492643813034, guid: 7f46c5d6b14a4ba45a76fae5b2dd923d, type: 3}
   - {fileID: 3026352492643813034, guid: 9b8f616f38679bd478a4cbaf2aa69ada, type: 3}
   - {fileID: 3026352492643813034, guid: e045349dcc76f9a459dd348aa8e08dbe, type: 3}
-  - {fileID: 3026352492643813034, guid: 046940fc634d4d143899e2ea4cf76d29, type: 3}
   - {fileID: 3026352492643813034, guid: 1d814c902988d6146a327f7ebddbe175, type: 3}
   - {fileID: 3026352492643813034, guid: 67e0096c47d25c34682b3249935d58c0, type: 3}
 --- !u!4 &1442970492
@@ -3228,6 +3222,7 @@ MonoBehaviour:
   playerStart1: {fileID: 2034768183}
   playerStart2: {fileID: 1597654326}
   ballStart: {fileID: 1623464385}
+  Football2: {fileID: 1999500605}
   goalBanner: {fileID: 1981407164}
   goal1: {fileID: 1018240273}
   goal2: {fileID: 892182628}
@@ -4690,6 +4685,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1999500605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1055942111369585384, guid: 039aec9d7ccc69b498199ce04b849337, type: 3}
+  m_PrefabInstance: {fileID: 6944839572993306354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2034768183
 GameObject:
   m_ObjectHideFlags: 0
@@ -5040,10 +5040,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2591745609367876055, guid: f6b808b2e511c974e8741dc3ad91a87f, type: 3}
-      propertyPath: rb
-      value: 
-      objectReference: {fileID: 1192349405}
     - target: {fileID: 2591745609367876055, guid: f6b808b2e511c974e8741dc3ad91a87f, type: 3}
       propertyPath: enemy
       value: 
